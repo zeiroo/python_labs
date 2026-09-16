@@ -9,7 +9,7 @@
 
 Файл: src/01_greeting.py
 
-Скрин: ![alt text](images/lab01/image1.png)
+![alt text](images/lab01/image1.png)
 
 ## Задание 2 — Сумма и среднее
 Вводишь два числа, программа считает сумму и среднее.
@@ -18,7 +18,7 @@
 
 Файл: src/02_sum_avg.py
 
-Скрин: ![alt text](images/lab01/image2.png)
+![alt text](images/lab01/image2.png)
 
 ## Задание 3 — Скидка и НДС
 
@@ -28,7 +28,7 @@
 
 Файл: src/03_discount_vat.py
 
-Скрин: ![alt text](images/lab01/image3.png)
+![alt text](images/lab01/image3.png)
 ## Задание 4 — Минуты в часы
 
 Вводишь минуты, получаешь часы и минуты, типа 135 это 2:15.
@@ -37,7 +37,7 @@
 
 Файл: src/04_minutes_to_hhmm.py
 
-Скрин: ![alt text](images/lab01/image4.png)
+![alt text](images/lab01/image4.png)
 
 ## Задание 5 — Инициалы
 
@@ -47,7 +47,7 @@
 
 Файл: src/05_initials_and_len.py
 
-Скрин: ![задание 5](images/lab01/image5.png)
+![задание 5](images/lab01/image5.png)
 
 ## Задание 6 — Студенты
 
@@ -57,7 +57,7 @@
 
 Файл: src/06.py
 
-Скрин: ![задание 6](images/lab01/image6.png)
+![задание 6](images/lab01/image6.png)
 
 ## Задание 7 — Шифр
 
@@ -67,4 +67,4 @@
 
 Файл: src/07.py
 
-Скрин: ![задание 7](images/lab01/image7.png)
+![задание 7](images/lab01/image7.png)
