@@ -1,4 +1,4 @@
-inp = str(input())
+inp = str(input("in: "))
 out = ""
 step = 0
 start = 0
@@ -20,5 +20,5 @@ for i in range(start + step, len(inp), step):
     char = inp[i]
     out += char
 
-print(out)
+print("out:", out)
     
