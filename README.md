@@ -1,5 +1,98 @@
 Ильичев Тимофей Алексеевич БИВТ 26-6-3
 
+## Лабораторная работа 5 — JSON и конвертации
+
+[json_csv.py](src/lab05/json_csv.py) преобразует JSON в CSV и CSV в JSON.
+[csv_xlsx.py](src/lab05/csv_xlsx.py) преобразует CSV в XLSX через openpyxl.
+Это единственная внешняя зависимость, она указана в [requirements.txt](requirements.txt).
+
+Входные данные лежат в [data/lab05/samples](data/lab05/samples), результаты — в [data/lab05/out](data/lab05/out).
+
+- Кодировка файлов — UTF-8, разделитель CSV — запятая.
+- JSON — список плоских словарей; колонки собираются по всем ключам, пропуски остаются пустыми.
+- В CSV обязателен заголовок, после преобразования в JSON значения остаются строками.
+- Лист XLSX — `Sheet1`, ширина колонок по тексту с запасом 2, минимум 8.
+
+Пустые файлы, неверная структура или расширение вызывают `ValueError`,
+отсутствующий файл — `FileNotFoundError`. JSON сохраняется с `ensure_ascii=False, indent=2`.
+
+### Установка и запуск
+
+Python 3.10+. Команды выполняются из корня проекта.
+
+```text
+py -m pip install -r requirements.txt
+py -m src.lab05.json_csv
+py -m src.lab05.csv_xlsx
+```
+
+Результат запуска:
+
+```text
+people.json -> people_from_json.csv
+people.csv -> people_from_csv.json
+students.json -> students_from_json.csv
+cities.csv -> cities_from_csv.json
+people.csv -> people.xlsx
+cities.csv -> cities.xlsx
+```
+
+Сами функции ничего не печатают, сообщения выводятся только в демонстрационном
+запуске. Выходные папки создаются автоматически, результаты перезаписываются.
+
+![Запуск конвертаций](images/lab05/image1.png)
+
+### Сценарий 1 - JSON в CSV
+
+В [students.json](data/lab05/samples/students.json) три студента с разным набором полей:
+у второго нет среднего балла, у третьего есть дополнительное поле `scholarship`.
+Все ключи попадают в заголовок, пропуски остаются пустыми.
+
+Результат [students_from_json.csv](data/lab05/out/students_from_json.csv):
+
+```csv
+fio,group,gpa,scholarship
+Ильичев Тимофей Алексеевич,БИВТ-26-6-3,4.7,
+Соколова Мария Андреевна,БИВТ-26-6-2,,
+Орлов Никита Сергеевич,БИВТ-26-6-3,4.9,True
+```
+
+До и после конвертации — 3 записи. Для people — 5 записей,
+заголовок `name,age,city`.
+
+![JSON в CSV: исходные данные и результат](images/lab05/image2.png)
+
+### Сценарий 2 - CSV в JSON
+
+[people.csv](data/lab05/samples/people.csv) содержит 5 записей.
+В [people_from_csv.json](data/lab05/out/people_from_csv.json) получается 5 объектов.
+Ключи совпадают с заголовком CSV, возраст сохраняется строкой:
+
+```json
+{
+  "name": "Alice",
+  "age": "22",
+  "city": "SPB"
+}
+```
+
+Дополнительный пример — [cities_from_csv.json](data/lab05/out/cities_from_csv.json):
+5 объектов с ключами `city`, `country`, `population`; население тоже строковое.
+
+![CSV в JSON: исходные данные и результат](images/lab05/image3.png)
+
+### Сценарий 3 - CSV в XLSX
+
+[cities.csv](data/lab05/samples/cities.csv) преобразуется в
+[cities.xlsx](data/lab05/out/cities.xlsx). В книге один лист `Sheet1`,
+5 записей и заголовок. Ширины колонок: city — 15, country — 9, population — 12.
+Длинное название `Yekaterinburg` помещается целиком.
+
+Также создаётся [people.xlsx](data/lab05/out/people.xlsx): лист `Sheet1`,
+5 записей и заголовок; ширины колонок — 8, 8 и 13.
+
+![Таблица городов в LibreOffice Calc](images/lab05/image4.png)
+
 ## Лабораторная работа 4
 
 Запуск из корня проекта: `py -m src.lab04.text_report`.
