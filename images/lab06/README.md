@@ -1,78 +1,56 @@
 # Скриншоты ЛР6
 
-Нужны настоящие скриншоты терминала после выполнения команд из корня проекта.
-Файлы не нужно рисовать или заменять картинками с набранным вручную выводом.
-Если группа команд не помещается, сделайте несколько снимков с суффиксами `_1`, `_2`.
+Четыре снимка терминала, как в отчёте Артемия: текст, конвертации, справка, ошибки.
+Все команды выполнять из корня проекта. Перед каждым блоком можно выполнить `cls`.
+На снимке должны быть видны введённые команды и их вывод. При необходимости увеличьте
+высоту терминала или уменьшите его шрифт, чтобы весь блок поместился.
 
-## 1. image_text.png — cat и stats
+## 1. image_text.png — текстовые команды
 
 ```powershell
 py -m src.lab06.cli_text cat --input data/lab05/samples/people.csv -n
 py -m src.lab06.cli_text stats --input data/lab06/samples/stats.txt --top 5
 ```
 
-Должны быть видны команда, строки CSV с номерами и результат статистики:
-15 слов, 9 уникальных, python/слова/текст по 3 вхождения.
+На снимке: CSV с номерами строк и статистика текста — 15 слов, 9 уникальных,
+python/слова/текст по 3 вхождения.
 
-## 2. image_convert.png — все конвертации
+## 2. image_convert.png — конвертации
 
 ```powershell
 py -m src.lab06.cli_convert json2csv --in data/lab05/samples/people.json --out data/out/people.csv
 py -m src.lab06.cli_convert csv2json --in data/lab05/samples/people.csv --out data/out/people.json
 py -m src.lab06.cli_convert csv2xlsx --in data/lab05/samples/people.csv --out data/out/people.xlsx
-Get-Content data/out/people.csv
-Get-Content data/out/people.json
 ```
 
-Должны быть видны три сообщения «Готово» и содержимое результатов.
+На снимке: три команды и три сообщения «Готово». Отдельный снимок Excel для
+четырёх снимков по образцу Артемия не нужен.
 
-## 3. image_xlsx.png — таблица
-
-Откройте [people.xlsx](../../data/out/people.xlsx) в Excel или LibreOffice Calc.
-На снимке должны быть видны Sheet1, заголовок name/age/city и 5 записей.
-
-## 4. image_help_text.png — справка текстовых команд
-
-```powershell
-py -m src.lab06.cli_text --help
-py -m src.lab06.cli_text cat --help
-py -m src.lab06.cli_text stats --help
-```
-
-## 5. image_help_convert.png — справка конвертеров
+## 3. image_help.png — справка
 
 ```powershell
 py -m src.lab06.cli_convert --help
-py -m src.lab06.cli_convert json2csv --help
-py -m src.lab06.cli_convert csv2json --help
-py -m src.lab06.cli_convert csv2xlsx --help
+py -m src.lab06.cli_text stats --help
 ```
 
-Справку каждой подкоманды нужно проверить; при необходимости сохраните два снимка.
+На снимке: перечень трёх конвертаций и параметры stats, включая --input и --top.
+Это те же два примера справки, что показаны в отчёте Артемия.
+Справку остальных подкоманд также нужно проверить — команды перечислены в общем отчёте,
+но помещать всю справку на этот снимок не требуется.
 
-## 6. image_errors.png — ошибки
+## 4. image_errors.png — ошибки
 
 ```powershell
 py -m src.lab06.cli_text cat --input missing.txt
 py -m src.lab06.cli_text stats --input data/lab06/samples/stats.txt --top abc
-py -m src.lab06.cli_text stats --input data/lab06/samples/stats.txt --top -1
-py -m src.lab06.cli_convert json2csv --in data/lab05/samples/people.json
 ```
 
-Должны быть понятные сообщения без traceback.
+На снимке: сообщение об отсутствующем файле и об ошибке преобразования --top в int.
+Эти ошибки ожидаются: для снимка их исправлять не нужно.
 
-## После сохранения снимков
+## Куда сохранить
 
-Добавьте в раздел ЛР6 общего [README](../../README.md) изображения:
-
-```markdown
-![Вывод текста и статистика](images/lab06/image_text.png)
-![Конвертации](images/lab06/image_convert.png)
-![Таблица XLSX](images/lab06/image_xlsx.png)
-![Справка текстовых команд](images/lab06/image_help_text.png)
-![Справка конвертеров](images/lab06/image_help_convert.png)
-![Обработка ошибок](images/lab06/image_errors.png)
-```
-
-Пути выше рассчитаны на общий README в корне проекта.
-Если снимки разбиты на части, добавьте ссылки на каждую часть.
+Сохранить четыре PNG в эту папку с указанными именами. Например, через Win+Shift+S,
+затем сохранить снимок, а не только скопировать в буфер обмена.
+Ссылки уже добавлены в соответствующие разделы общего [README](../../README.md).
+После сохранения файлов они появятся в отчёте без дополнительных правок Markdown.
