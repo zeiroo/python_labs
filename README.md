@@ -39,8 +39,6 @@ Two Sum реализован перебором пар и за один прох
 OK: 798 проверок
 ```
 
-![Результат проверки](images/lab07/image_check.jpg)
-
 ### Задание D — замеры
 
 [bench.py](src/lab07/bench.py) измеряет время через `timeit` и сохраняет таблицу
@@ -57,29 +55,20 @@ OK: 798 проверок
 
 Время указано в секундах. Замеры выполнены на Python 3.14.0, Windows AMD64.
 
-| task | n | impl | seconds |
-|---|---:|---|---:|
-| sort | 1000 | sorted | 0.000045 |
-| sort | 1000 | bubble | 0.024617 |
-| sort | 1000 | selection | 0.010868 |
-| sort | 1000 | insertion | 0.011258 |
-| sort | 10000 | sorted | 0.000886 |
-| sort | 10000 | bubble | 2.859414 |
-| sort | 10000 | selection | 1.162787 |
-| sort | 10000 | insertion | 1.288063 |
-| sort | 100000 | sorted | 0.012266 |
-| sort | 100000 | bubble | skipped |
-| sort | 100000 | selection | skipped |
-| sort | 100000 | insertion | skipped |
-| search | 100000 | linear | 10.898041 |
-| search | 100000 | sort_before_binary | 0.013448 |
-| search | 100000 | binary | 0.011241 |
-| two_sum | 1000 | brute | 0.016584 |
-| two_sum | 1000 | fast | 0.000088 |
-| two_sum | 10000 | brute | 0.090262 |
-| two_sum | 10000 | fast | 0.000228 |
+```powershell
+py -m src.lab07.bench
+```
 
-![Результаты бенчмарка](images/lab07/image_bench.jpg)
+```text
+task            n impl                    seconds
+--------------------------------------------------
+sort         1000 sorted                 0.000045
+sort         1000 bubble                 0.024617
+...
+Сохранено: data/lab07/bench.csv
+```
+
+![Результаты бенчмарка](images/lab07/image_bench.png)
 
 ### Выводы
 
