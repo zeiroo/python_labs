@@ -32,13 +32,15 @@ def bench_sorts() -> list[tuple]:
     rows = []
     for n in SORT_SIZES:
         data = make_numbers(n)
-        rows.append(("sort", n, "sorted", f"{measure(lambda: sorted(data), 100):.6f}"))
+        t = measure(lambda: sorted(data), 100)
+        rows.append(("sort", n, "sorted", f"{t:.6f}"))
         for fn in (bubble_sort, selection_sort, insertion_sort):
             name = fn.__name__.replace("_sort", "")
             if n > QUADRATIC_LIMIT:
                 rows.append(("sort", n, name, SKIPPED))
                 continue
-            rows.append(("sort", n, name, f"{measure(lambda: fn(data)):.6f}"))
+            t = measure(lambda: fn(data))
+            rows.append(("sort", n, name, f"{t:.6f}"))
     return rows
 
 
@@ -46,13 +48,14 @@ def bench_search() -> list[tuple]:
     """Измерить пакет запросов и отдельно подготовку бинарного поиска."""
     data = make_numbers(SEARCH_SIZE)
     queries = [random.choice(data) for _ in range(QUERIES)]
-    rows = [("search", SEARCH_SIZE, "linear",
-             f"{measure(lambda: [linear_search(data, x) for x in queries]):.6f}")]
-    rows.append(("search", SEARCH_SIZE, "sort_before_binary",
-                 f"{measure(lambda: sorted(data), 10):.6f}"))
+    rows = []
+    t = measure(lambda: [linear_search(data, x) for x in queries])
+    rows.append(("search", SEARCH_SIZE, "linear", f"{t:.6f}"))
+    t = measure(lambda: sorted(data), 10)
+    rows.append(("search", SEARCH_SIZE, "sort_before_binary", f"{t:.6f}"))
     ordered = sorted(data)
-    rows.append(("search", SEARCH_SIZE, "binary",
-                 f"{measure(lambda: [binary_search(ordered, x) for x in queries]):.6f}"))
+    t = measure(lambda: [binary_search(ordered, x) for x in queries])
+    rows.append(("search", SEARCH_SIZE, "binary", f"{t:.6f}"))
     return rows
 
 
@@ -62,10 +65,10 @@ def bench_two_sum() -> list[tuple]:
     for n in TWO_SUM_SIZES:
         data = make_numbers(n)
         target = data[-2] + data[-1]
-        rows.append(("two_sum", n, "brute",
-                     f"{measure(lambda: two_sum_brute(data, target)):.6f}"))
-        rows.append(("two_sum", n, "fast",
-                     f"{measure(lambda: two_sum_fast(data, target), 100):.6f}"))
+        t = measure(lambda: two_sum_brute(data, target))
+        rows.append(("two_sum", n, "brute", f"{t:.6f}"))
+        t = measure(lambda: two_sum_fast(data, target), 100)
+        rows.append(("two_sum", n, "fast", f"{t:.6f}"))
     return rows
 
 
