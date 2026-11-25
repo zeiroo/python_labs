@@ -1,20 +1,20 @@
 task,n,impl,seconds
-sort,1000,sorted,0.000091115
-sort,1000,bubble_sort,0.039927400
-sort,1000,insertion_sort,0.024917700
-sort,1000,selection_sort,0.017339900
-sort,10000,sorted,0.001531975
-sort,10000,bubble_sort,4.676012200
-sort,10000,insertion_sort,1.789887300
-sort,10000,selection_sort,1.655237600
-sort,100000,sorted,0.017086735
-sort,100000,bubble_sort,> 60 s
-sort,100000,insertion_sort,> 60 s
-sort,100000,selection_sort,> 60 s
-search,100000,linear_search,26.255115400
-search,100000,sort_before_binary,0.021216965
-search,100000,binary_search,0.024769000
-two_sum,1000,two_sum_brute,0.028760300
-two_sum,1000,two_sum_fast,0.000188227
-two_sum,10000,two_sum_brute,2.932762700
-two_sum,10000,two_sum_fast,0.002410412
+sort,1000,sorted,0.000045
+sort,1000,bubble,0.024617
+sort,1000,selection,0.010868
+sort,1000,insertion,0.011258
+sort,10000,sorted,0.000886
+sort,10000,bubble,2.859414
+sort,10000,selection,1.162787
+sort,10000,insertion,1.288063
+sort,100000,sorted,0.012266
+sort,100000,bubble,skipped
+sort,100000,selection,skipped
+sort,100000,insertion,skipped
+search,100000,linear,10.898041
+search,100000,sort_before_binary,0.013448
+search,100000,binary,0.011241
+two_sum,1000,brute,0.016584
+two_sum,1000,fast,0.000088
+two_sum,10000,brute,0.090262
+two_sum,10000,fast,0.000228
