@@ -14,7 +14,8 @@ QUADRATIC_LIMIT = 10_000
 SEARCH_SIZE = 100_000
 QUERIES = 10_000
 TWO_SUM_SIZES = (1_000, 10_000)
-SKIPPED = "skipped"
+# Условная отметка для больших запусков, пропущенных по ограничению размера.
+SKIPPED = "> 60"
 
 
 def make_numbers(n: int) -> list[int]:
